@@ -6,13 +6,18 @@
  */
 #include "stm32f10x.h"
 #include "I2C_Driver.h"
+#include "fsmc_nand.h"
+#include "usart.h"
 
 #ifndef MEMORY_H_
 #define MEMORY_H_
 
-void eeprom_set_addr(uint32_t addr);
-void eeprom_write(uint32_t addr,const void* data,int size);
-void eeprom_read(uint32_t addr, void* data, int size);
+void data_from_pc_read(uint8_t*);
+NAND_ADDRESS write_read_address_set(uint16_t,uint16_t,uint16_t);
+void write_buffer(uint8_t*,NAND_ADDRESS,uint8_t);
+void read_buffer(uint8_t*,NAND_ADDRESS,uint8_t);
+void data_from_pc_in_memory_write(uint16_t,uint16_t,uint16_t);
 
 
 #endif /* MEMORY_H_ */
+
